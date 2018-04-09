@@ -24,8 +24,6 @@ class Library extends Component {
               <div>{album.title}</div>
               <div>{album.artist}</div>
               <div>{album.songs.length} songs</div>
-              {/*console.log('album >>>', album)*/}
-              {/*console.log('album >>>', album.slug)*/}
             </Link>
           )
         }

@@ -7,9 +7,6 @@ class Album extends Component {
     super(props);
 
     const album = albumData.find((album) => {
-      // if (album.slug === this.props.match.params.slug) {
-      //   return album;
-      // }
       return album.slug === this.props.match.params.slug
     })
 
@@ -38,10 +35,22 @@ class Album extends Component {
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>
-          <tbody>
-          </tbody>
-        </table>
 
+          <tbody>
+            {
+              this.state.album.songs.map((song,index) => {
+                return (
+                  <tr className="album-view-song-item" key={index}>
+                    <td className="song-item-number">{index+1}</td>
+                    <td className="song-item-title">{song.title}</td>
+                    <td className="song-item-duration">{song.duration}</td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+
+        </table>
 
        </section>
     )
