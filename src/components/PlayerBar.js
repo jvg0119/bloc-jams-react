@@ -20,7 +20,8 @@ class PlayerBar extends Component {
                 </span>
             </button>
 
-            <button id="next">
+            <button id="next"
+              onClick={this.props.handleNextClick}>
               <span className="ion-skip-forward"></span>
             </button>
           </section>
@@ -45,4 +46,4 @@ class PlayerBar extends Component {
 
 
 
-export default PlayerBar;
+  export default PlayerBar;
