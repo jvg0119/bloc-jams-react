@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import albumData from './../data/albums'
+import albumData from './../data/albums';
+import PlayerBar from './PlayerBar';
 
 class Album extends Component {
 
@@ -12,9 +13,8 @@ class Album extends Component {
 
     this.state = {
       album: album,
-      currentSong: null, //album.songs[0],
+      currentSong: album.songs[0],
       isPlaying: false,
-    //  isSameSong: true
     };
 
     this.audioElement = document.createElement('audio');
@@ -39,23 +39,31 @@ class Album extends Component {
 
   handleSongClick(song) {
    const isSameSong = this.state.currentSong === song;
-    // console.log('handleSongClick', song)
-    // console.log(isSameSong)
-    // if (this.state.isPlaying && isSameSong) {
-    //   this.pause();
-    // } else {
-    //   if (!isSameSong) {
-    //     this.setSong(song)
-    //     this.play()
-    //   }
-    // }
     if (this.state.isPlaying && isSameSong) {
       this.pause();
-    } else if (!isSameSong) {
-      this.setSong(song)
+    } else {
+      if (!isSameSong) { this.setSong(song); }
       this.play()
     }
+  }
 
+  handlePrevClick() {
+    console.log('handlePrevClick!!!');
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+
+    // this will keep playing the first song if it's already there
+    const newIndex = Math.max(0, currentIndex - 1);
+    const newSong = this.state.album.songs[newIndex];
+    this.setSong(newSong);
+    this.play(newSong);
+
+    // this works; it also plays the last song if currentSong is the first song
+    // if (currentIndex === 0) {
+    //   this.setSong(this.state.album.songs[this.state.album.songs.length-1]);
+    // } else {
+    //   this.setSong(this.state.album.songs[currentIndex -1]);
+    // }
+    // this.play();
   }
 
   render() {
@@ -63,7 +71,7 @@ class Album extends Component {
       <section className="album">
 
         <section id="album-info">
-          <img id="album-cover-art" src={this.state.album.albumCover}/>
+          <img id="album-cover-art" src={this.state.album.albumCover} alt="this.state.album.title"/>
           <div className="album-details">
             <h1 id="album-title">{this.state.album.title}</h1>
             <h2 className="artist">{this.state.album.artist}</h2>
@@ -80,31 +88,33 @@ class Album extends Component {
 
           <tbody>
             {
-              this.state.album.songs.map((song,index) => {
-                return (
-                  <div>
-                    <tr className="song" key={index}
-                      onClick={() => this.handleSongClick(song)}
-                    >
-                      <td className="song-actions">
-                        <span className="song-number">{index+1}</span>
-                        <span className="ion-play"></span>
-                        <span className="ion-pause"></span>
-                      </td>
-                      <td className="song-title">{song.title}</td>
-                      <td className="song-duration">{song.duration}</td>
+              this.state.album.songs.map((song,index) => (
 
-                    </tr>
+                  <tr className="song" key={index}
+                    onClick={() => this.handleSongClick(song)}
+                  >
+                    <td className="song-actions">
+                      <span className="song-number">{index+1}</span>
+                      <span className="ion-play"></span>
+                      <span className="ion-pause"></span>
+                    </td>
+                    <td className="song-title">{song.title}</td>
+                    <td className="song-duration">{song.duration}</td>
+                  </tr>
 
-                  </div>
-
-
-                )
-              })
+              ))
             }
           </tbody>
 
         </table>
+
+        <PlayerBar
+          isPlaying={this.state.isPlaying}
+          currentSong={this.state.currentSong}
+          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+          handlePrevClick={() => this.handlePrevClick()}
+
+        />
 
        </section>
     )
