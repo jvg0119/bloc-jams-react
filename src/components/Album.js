@@ -149,8 +149,7 @@ class Album extends Component {
   }
 
   formatTime(time) {
-    //console.log('timeFormat !!!', time);
-    if (isNaN(time)) { return "-:--" } else {
+    if (isNaN(time) || time === '') { return "-:--" } else {
       const min = Math.trunc(time / 60);
       const sec = Math.trunc(time % 60);
       const formatedTime = `${min}:${sec}`
@@ -191,7 +190,7 @@ class Album extends Component {
                       <span className="ion-pause"></span>
                     </td>
                     <td className="song-title">{song.title}</td>
-                    <td className="song-duration">{song.duration}</td>
+                    <td className="song-duration">{this.formatTime(song.duration)}</td>
                   </tr>
 
               ))
