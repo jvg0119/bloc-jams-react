@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './Library.css';
+import './PlayerBar.css'
 
 class PlayerBar extends Component {
 
@@ -28,9 +30,7 @@ class PlayerBar extends Component {
           </section>
 
           <section id="time-control">
-            {/*<div className="current-time">–:––</div>*/}
-            <div className="current-time">{this.props.formatTime(this.props.currentTime)}</div>
-              {/* <input type="range" className="seek-bar" value="0" /> */}
+
               <input
                 type="range"
                 className="seek-bar"
@@ -40,14 +40,16 @@ class PlayerBar extends Component {
                 step='.01'
                 onChange={this.props.handleTimeChange}
               />
-              <p>{/*this.props.currentTime*/}</p>
 
-            {/* <div className="total-time">–:––</div> */}
-            <div className="total-time">{this.props.formatTime(this.props.duration)}</div>
+            <div className="time-control-status">
+              <div className="current-time">{this.props.formatTime(this.props.currentTime)}</div>
+              <div className="total-time">{this.props.formatTime(this.props.duration)}</div>
+            </div>
+
           </section>
 
           <section id="volume-control">
-            <div className="icon ion-volume-low"></div>
+
               <input
                 type="range"
                 className="seek-bar"
@@ -56,9 +58,14 @@ class PlayerBar extends Component {
                 min='0'
                 step='.01'
                 onChange={this.props.handleVolumeChange}
+
               />
-              <p>volume: {this.props.volume}</p>
-            <div className="icon ion-volume-high"></div>
+              {/* <p>volume: {this.props.volume}</p> */}
+            <div className="volume-control-status">
+              <div className="icon ion-volume-low"></div>
+              <div className="icon ion-volume-high"></div>
+            </div>
+
           </section>
 
         </section>

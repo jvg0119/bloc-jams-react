@@ -1,0 +1,26 @@
+
+.hero-title {
+  font-family: 'Diplomata SC', cursive;
+  text-align: center;
+  line-height: 300px;
+  font-size: 4em;
+  color: #412a47;
+  position: relative;
+  min-height: 1000px;
+
+  background-image: url(../assets/images/blurred_backgrounds/bloc_jams_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.selling-points {
+  display: flex;
+  color: #e6deed;
+}
+
+.selling-points .point {
+  flex: 1;
+  height: 200px;
+  padding: 20px;
+}

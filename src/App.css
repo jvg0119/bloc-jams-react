@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -25,4 +25,41 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.App {
+  background: url(assets/images/blurred_backgrounds/bloc_jams_bg.jpg);
+}
+*/
+
+
+.App {
+  background: #591f68;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav h1 a {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2em;
+  color: #ff2d57;
+  padding: 50px;
+}
+
+.nav h4 {
+  height: 50px;
+  padding-top: 20px;
+  padding-right: 30px;
+}
+.nav h4 a {
+  font-size: 1.3em;
+  color: #e6deed;
+}
+
+a {
+  text-decoration: none;
 }

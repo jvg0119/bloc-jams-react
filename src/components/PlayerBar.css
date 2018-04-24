@@ -1,0 +1,111 @@
+
+.player-bar {
+  display: flex;
+
+  color: white;
+  font-size: 1.1em;
+  text-align: center;
+  height: 300px;
+  padding: 10px;
+}
+
+/*
+#buttons {
+  border: 3px solid red;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  width: 50px;
+}
+
+
+.ion-skip-backward, .ion-skip-forward, .ion-play, .ion-pause {
+  border: 3px solid yellow;
+  flex: 1;
+  height: 5px;
+  width: 10px;
+}
+*/
+
+
+#time-control {
+  padding: 20px;
+  flex: 2;
+}
+
+.seek-bar {
+  -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.seek-bar:hover {
+    opacity: 5;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #cb37d2;/*#4CAF50;*/
+    cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb:hover {
+  width: 40px;
+  height: 40px;
+}
+
+.time-control-status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-time {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.total-time {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+
+.volume-control-status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon.ion-volume-high {
+  margin-right: 20px;
+
+}
+
+.icon.ion-volume-low {
+  margin-left: 20px;
+}
+
+#volume-control {
+  flex: 1;
+  padding: 20px;
+}
+
+.ion-skip-backward, .ion-play, .ion-pause, .ion-skip-forward {
+  font-size: 30px;
+}
+
+.ion-volume-high, .ion-volume-low {
+  font-size: 40px;
+}
+
+/*    */
