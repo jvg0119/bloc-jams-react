@@ -1,0 +1,34 @@
+
+.ion-play {
+  background: white;
+  color: purple;
+  border-radius: 50px 50px;
+  font-size: 1.3em;
+  padding: 4px 12px;
+  text-align: center;
+}
+
+.ion-play:hover {
+  background: #e0287b;
+  color: white;
+  border-radius: 50px 50px;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.ion-pause {
+  background: white;
+  color: purple;
+  border-radius: 50px 50px;
+  font-size: 1.3em;
+  padding: 4px 12px;
+  text-align: center;
+}
+
+.ion-pause:hover {
+  background: #e0287b;
+  color: white;
+  border-radius: 50px 50px;
+  font-size: 1.3em;
+  text-align: center;
+}

@@ -6,9 +6,9 @@ class PlayerBar extends Component {
 
   render() {
     return (
-      <div>
-        <section className="player-bar">
-
+        <div className="player-bar">
+          <span className="player-bar-title">{this.props.currentSong.title}</span>
+          <span className="player-bar-artist">{this.props.album.artist}</span>
           <section id="buttons">
             <button id="previous"
               onClick={this.props.handlePrevClick}>
@@ -68,8 +68,7 @@ class PlayerBar extends Component {
 
           </section>
 
-        </section>
-      </div>
+        </div>
     )
   }
 }

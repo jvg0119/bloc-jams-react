@@ -1,8 +1,11 @@
+
+.container {
+}
+
 .album {
   text-align: center;
   padding: 100px;
   color: #e6deed;
-
 }
 
 #album-info {
@@ -10,30 +13,29 @@
 }
 
 img {
-  width: 50%;
-  height: 50%;
   padding: 5px;
+  width: 50%;
 }
 
 .album-details {
-  padding: 1px 20px;
-  margin-top: 5%;
+  margin-top: 10%;
+  width: 50%;
 }
 
 #song-list {
-  text-align: center;
-  /*border: 3px solid red;*/
+  padding: 10px;
 }
 
 table, th, td {
   height: 50px;
-  font-size: 1em;
+  font-size: 1.1em;
   margin:auto;
 }
 
 th, td {
   padding: 10px;
-  border-bottom: 1px solid white;
+  border-bottom: 3px solid white;
+  border-bottom-style:ridge;
 }
 
 td.song-actions {
@@ -49,6 +51,3 @@ td.song-title {
 td.song-duration {
   width: 100px;
 }
-
-
-/*   */

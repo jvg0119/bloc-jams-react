@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Istok+Web|Source+Sans+Pro:400,700');
+
+.landing {
+}
 
 .hero-title {
-  font-family: 'Diplomata SC', cursive;
+  font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   line-height: 300px;
-  font-size: 4em;
-  color: #412a47;
+  font-size: 4rem;
+  color: white;
   position: relative;
   min-height: 1000px;
 
@@ -16,11 +20,48 @@
 
 .selling-points {
   display: flex;
+  flex-direction: column;
   color: #e6deed;
+  text-align: center;
+  font-size: 1.2rem;
+  padding-bottom: 20px;
 }
 
 .selling-points .point {
-  flex: 1;
-  height: 200px;
-  padding: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1.2rem;
+}
+
+/* ========================================================= */
+
+/* small phones to small tablets: from 481px to 767px */
+@media only screen and (min-width: 767px) {
+  .selling-points {
+  }
+  .selling-points .point {
+  }
+}
+
+/* small tablet to big tablet: from 768px to 1023px */
+@media only screen and (min-width: 1023px) {
+  .selling-points {
+    flex-direction: row;
+  }
+
+  .selling-points .point {
+    flex: 1;
+  }
+}
+
+/* big tablet to 1200px (width smaller than the 1140px row) */
+@media only screen and (min-width: 1200px) {
+  .selling-points {
+    color: #e6deed;
+    width: 90%;
+    margin: auto;
+  }
+
+  .selling-points .point {
+  }
 }

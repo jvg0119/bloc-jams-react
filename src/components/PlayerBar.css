@@ -1,36 +1,29 @@
-
 .player-bar {
   display: flex;
-
+  flex-direction: column;
   color: white;
   font-size: 1.1em;
   text-align: center;
-  height: 300px;
-  padding: 10px;
+  padding: 2rem;
+  margin: auto;
 }
 
-/*
 #buttons {
-  border: 3px solid red;
   flex: 1;
   display: flex;
-  justify-content: space-between;
-  height: 100px;
-  width: 50px;
+  /*justify-content: space-between;*/
+  justify-content: center;
+  height: 50px;
+  padding: 20px;
 }
-
 
 .ion-skip-backward, .ion-skip-forward, .ion-play, .ion-pause {
-  border: 3px solid yellow;
-  flex: 1;
-  height: 5px;
-  width: 10px;
+  padding: 8px;
+  color: purple;
 }
-*/
-
 
 #time-control {
-  padding: 20px;
+  padding-top: 30px;
   flex: 2;
 }
 
@@ -56,7 +49,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #cb37d2;/*#4CAF50;*/
+    background: #cb37d2;
     cursor: pointer;
 }
 
@@ -80,7 +73,6 @@
   margin-right: 20px;
 }
 
-
 .volume-control-status {
   display: flex;
   justify-content: space-between;
@@ -88,7 +80,6 @@
 
 .icon.ion-volume-high {
   margin-right: 20px;
-
 }
 
 .icon.ion-volume-low {
@@ -97,15 +88,102 @@
 
 #volume-control {
   flex: 1;
-  padding: 20px;
+  padding-top: 30px;
 }
 
 .ion-skip-backward, .ion-play, .ion-pause, .ion-skip-forward {
   font-size: 30px;
 }
 
+.ion-skip-backward, .ion-play, .ion-pause, .ion-skip-forward:hover {
+  font-size: 30px;
+  cursor: pointer;
+}
+
 .ion-volume-high, .ion-volume-low {
   font-size: 40px;
 }
 
-/*    */
+.player-bar-title {
+  font-size: 1.8rem;
+}
+
+.player-bar-artist {
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+
+/*  ======================================================  */
+
+/* small phones to small tablets: from 481px to 767px */
+@media only screen and (min-width: 767px) {
+  .player-bar {
+    position: relative;
+    width: 80%;
+  }
+
+  .player-bar-title {
+  }
+
+  .player-bar-artist {
+  }
+
+  #buttons {
+  }
+
+  #time-control {
+  }
+
+  #volume-control {
+  }
+}
+
+/* small tablet to big tablet: from 768px to 1023px */
+@media only screen and (min-width: 1023px) {
+  .player-bar {
+    flex-direction: row;
+  }
+
+  .player-bar-title {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-top: -40px;
+  }
+
+  .player-bar-artist {
+    position: absolute;
+    left: 45%;
+    top: 0;
+    margin-top: 0px;
+  }
+
+  #buttons {
+  }
+
+  #time-control {
+    padding-right: 20px;
+  }
+
+  #volume-control {
+    padding-left: 20px;
+  }
+}
+
+/* big tablet to 1200px (width larger than the 1140px row) */
+@media only screen and (min-width: 1200px) {
+  .player-bar {
+    display: flex;
+    /*flex-wrap: wrap;*/
+  }
+
+  #buttons {
+  }
+
+  #time-control {
+  }
+
+  #volume-control {
+  }
+}

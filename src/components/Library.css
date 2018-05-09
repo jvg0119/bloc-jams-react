@@ -21,3 +21,19 @@ img {
   margin-top: 100px;
   padding: 20px;
 }
+
+/* ============== */
+
+/*
+.library .albums {
+  margin: 100px;
+  border: 10px solid yellow;
+}
+
+.library .albums,
+.library .albums img {
+  height: 100px;
+  width: 100px;
+  border: 3px solid green;
+}
+*/

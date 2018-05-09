@@ -31,35 +31,56 @@
   background: url(assets/images/blurred_backgrounds/bloc_jams_bg.jpg);
 }
 */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 
-
-.App {
-  background: #591f68;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
-}
-
-.nav h1 a {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 2em;
-  color: #ff2d57;
-  padding: 50px;
-}
-
-.nav h4 {
-  height: 50px;
-  padding-top: 20px;
-  padding-right: 30px;
-}
-.nav h4 a {
-  font-size: 1.3em;
-  color: #e6deed;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 a {
   text-decoration: none;
 }
+.nav {
+  display: flex;
+  justify-content: stretch;
+  background-color: #592068;/* #FFf;*/
+  padding: 2rem;
+  color: white;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 3px ridge gray;
+}
+
+.nav ul li {
+  padding: 1.5rem;
+  font-size: .7rem;
+}
+
+.nav ul li:first-child a {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.nav li a {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
+  color: #000;
+  color: white;
+}
+
+/* Medium and small screens (640px) */
+@media (min-width: 640px) {
+   html { font-size: 112%; }
+ }
+
+ /* Large screens (1024px) */
+ @media (min-width: 1024px) {
+   html { font-size: 120%; }
+ }

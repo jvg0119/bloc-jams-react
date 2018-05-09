@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import albumData from './../data/albums';
-// import './PlayerBar.css';
+import './PlayButton.css';
 
 class PlayButton extends Component {
   constructor(props) {
@@ -15,45 +14,40 @@ class PlayButton extends Component {
      if (song) {
        this.setState({isHovered: true});
      }
-     console.log('song is this >>> ', this.props.song)
   }
 
   onMouseLeaveHandler(song, currentSong) {
-    if ( song && (song === currentSong) && this.props.isPlaying ) {
-      this.setState({isHovered: true});
-    } else if ( song ) {
+    if (song) {
       this.setState({isHovered: false});
-
     }
-
   }
 
   render() {
+
+    const currentSong = this.props.song === this.props.currentSong;
+    let className;
+      if ( this.props.isPlaying && currentSong ){
+        className = "ion-pause";
+      } else if ((this.props.isPlaying && this.state.isHovered && !currentSong)
+      || (!this.props.isPlaying && this.state.isHovered && !currentSong)
+      || (!this.props.isPlaying && this.state.isHovered && currentSong)) {
+        className = "ion-play";
+      } else {
+        className = "song-number";
+      }
+
     return (
       <div>
 
         <span
           onMouseEnter={() => this.onMouseEnterHandler(this.props.song, this.props.currentSong)}
           onMouseLeave={() => this.onMouseLeaveHandler(this.props.song, this.props.currentSong)}
-
-          className={
-
-            this.state.isHovered && (this.props.song === this.props.currentSong) && this.props.isPlaying
-            ? "ion-pause"
-            : this.state.isHovered && (this.props.song === this.props.currentSong) && !this.props.isPlaying
-            ? "ion-play"
-            : this.state.isHovered && (this.props.song !== this.props.currentSong)
-            ? "ion-play"
-            : (this.props.song === this.props.currentSong) && this.props.isPlaying
-            ? "ion-pause"
-            : "song-number"
-          }
+          className={ className }
           >
+
           {
-            this.state.isHovered
-            ? null
-            : (this.props.song === this.props.currentSong) && (this.props.isPlaying)
-            ? null
+            this.state.isHovered || (currentSong && this.props.isPlaying)
+            ? ''
             : this.props.index + 1
           }
 
@@ -62,10 +56,5 @@ class PlayButton extends Component {
     )
   }
 }
-
-
-
-
-
 
 export default PlayButton;

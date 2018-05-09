@@ -20,7 +20,6 @@ class Album extends Component {
       currentTime: 0,
       duration: album.songs[0].duration,
       isPlaying: false,
-      songActionStatus: ''
     };
 
     this.audioElement = document.createElement('audio');
@@ -28,21 +27,9 @@ class Album extends Component {
 
 }
 
-  clearSongActionStatus(song) {
-    console.log('clearSongActionStatus song >>> ', song);
-    console.log('album >>>', this.state.album.songs)
-    // this.state.album.songs.forEach((song) => {
-    //
-    // })
-    this.setState({songActionStatus: ''})
-
-
-  }
-
   play(song) {
     this.audioElement.play();
     this.setState({isPlaying: true});
-    this.clearSongActionStatus(song);
   }
 
   pause() {
@@ -53,13 +40,9 @@ class Album extends Component {
   setSong(song) {
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
-    //this.setState({ previousSong: song });
     this.setState((prevState) => ({
       previousSong: this.state.currentSong
     }))
-    console.log('previousSong &&&>>> ',  this.state.previousSong);
-    console.log('currentSong >>> ',  this.state.currentSong);
-
   }
 
   handleSongClick(song) {
@@ -72,9 +55,7 @@ class Album extends Component {
     }
   }
 
-
   handlePrevClick() {
-    console.log('handlePrevClick!!!');
     const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
     const song = this.state.album.songs[currentIndex]
     // this will keep playing the first song if it's already there
@@ -94,11 +75,8 @@ class Album extends Component {
   }
 
   handleNextClick() {
-    //console.log('handleNextClick !!!');
-
     const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
     const song = this.state.album.songs[currentIndex]
-    // console.log('currentIndex >>> ', currentIndex);
 
 /* not needed; if you're in the last song and click next it will just repeat the last song
     const newIndex = Math.min(this.state.album.songs.length-1, currentIndex + 1);
@@ -116,49 +94,6 @@ class Album extends Component {
       //console.log('play next song')
     }
     this.play(song);
-  }
-
-  componentDidMount() {
-     console.log('componentWillMount in Alubm.js !!!')
-    // this.audioElement.addEventListener('timeupdate', (e) => {
-    //   this.setState({ currentTime: this.audioElement.currentTime });
-    //   // currentTime is an audio property that you can read or set on an audio element
-    // });
-    //
-    // this.audioElement.addEventListener('durationchange', (e) => {
-    //   this.setState({ duration: this.audioElement.duration });
-    // });
-    //durationchange event is fired when the duration attribute has been updated.
-
-    this.eventListeners = {
-      timeupdate: (e) => {
-        this.setState({ currentTime: this.audioElement.currentTime });
-      },
-      durationchange: (e) => {
-        this.setState({ duration: this.state.duration })
-      },
-      // volumeUpdate: (e) => {
-      // //  this.setState({currentVolume: this.audioElement.volume})
-      //
-    };
-    //console.log('this.eventListeners >>>', this.eventListeners);
-
-    this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
-    this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
-    // this.audioElement.addEventListener('volume', this.eventListeners.volumeUpdate );
-
-  }
-
-  // componentDidUpdate() {
-  //   console.log('componentDidUpdate PREVIOUS SONG >>> ', this.state.previousSong)
-  // }
-
-  componentWillUnmount() {
-    this.audioElement.src = null;
-    //this.audioElement = null;
-    console.log('this.eventListeners >>> ', this.eventListeners)
-    this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
-    this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
   }
 
   handleTimeChange(e) {
@@ -188,9 +123,41 @@ class Album extends Component {
     }
   }
 
+  componentDidMount() {
+    //  console.log('componentWillMount in Alubm.js !!!')
+    // this.audioElement.addEventListener('timeupdate', (e) => {
+    //   this.setState({ currentTime: this.audioElement.currentTime });
+    //   // currentTime is an audio property that you can read or set on an audio element
+    // });
+    //
+    // this.audioElement.addEventListener('durationchange', (e) => {
+    //   this.setState({ duration: this.audioElement.duration });
+    // });
+    //durationchange event is fired when the duration attribute has been updated.
+
+    this.eventListeners = {
+      timeupdate: (e) => {
+        this.setState({ currentTime: this.audioElement.currentTime });
+      },
+      durationchange: (e) => {
+        this.setState({ duration: this.state.duration })
+      },
+    };
+
+    this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
+    this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+
+  }
+
+  componentWillUnmount() {
+    this.audioElement.src = null;
+    this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
+    this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+  }
+
   render() {
     return (
-      <div>
+      <div className="container">
 
         <section className="album">
 
@@ -223,7 +190,6 @@ class Album extends Component {
                     index={index}
                     isPlaying={this.state.isPlaying}
                     currentSong={this.state.currentSong}
-                    songActionStatus={this.state.songActionStatus}
                     previousSong={this.state.previousSong}
                     album={this.state.album}
                   />
@@ -242,6 +208,7 @@ class Album extends Component {
          <PlayerBar
            isPlaying={this.state.isPlaying}
            currentSong={this.state.currentSong}
+           album={this.state.album}
            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={() => this.handlePrevClick()}
            handleNextClick={() => this.handleNextClick()}
