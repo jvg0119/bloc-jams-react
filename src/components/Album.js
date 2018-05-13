@@ -117,7 +117,8 @@ class Album extends Component {
   formatTime(time) {
     if (isNaN(time) || time === '') { return "-:--" } else {
       const min = Math.trunc(time / 60);
-      const sec = Math.trunc(time % 60);
+      const temp = Math.trunc(time % 60);
+      const sec = temp < 10 ? '0'+ temp : temp
       const formatedTime = `${min}:${sec}`
       return formatedTime
     }
